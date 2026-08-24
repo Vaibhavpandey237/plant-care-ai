@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cd react_frontend && npm run dev",
-    "build": "cd react_frontend && npm install && npm run build"
+    "dev": "npm --prefix react_frontend run dev",
+    "build": "npm --prefix react_frontend run build"
   }
 }
