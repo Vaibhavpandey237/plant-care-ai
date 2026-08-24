@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FloraCare - Smart Plant Care & Garden Companion</title>
+  <meta name="description" content="Your ultimate smart plant care companion. Track watering schedules, diagnose plant diseases, calculate light requirements, and manage your indoor jungle." />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="module" crossorigin src="/assets/index-erup9p2R.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B-gq_P63.css">
+</head>
+<body class="theme-dark">
+  <!-- Background Decorative Leaf Elements -->
+  <div class="bg-gradient-overlay"></div>
+  <div class="leaf-particle leaf-1">🍃</div>
+  <div class="leaf-particle leaf-2">🌿</div>
+  <div class="leaf-particle leaf-3">🌱</div>
+
+  <!-- Header Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <i data-lucide="sprout"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">FloraCare</span>
+          <span class="brand-tagline">Jungle Companion</span>
+        </div>
+      </div>
+
+      <nav class="nav-tabs">
+        <button class="nav-btn active" data-tab="library">
+          <i data-lucide="book-open"></i> <span>Plant Library</span>
+        </button>
+        <button class="nav-btn" data-tab="garden">
+          <i data-lucide="flower-2"></i> <span>My Garden</span> <span class="badge garden-count-badge" id="garden-count">0</span>
+        </button>
+        <button class="nav-btn" data-tab="doctor">
+          <i data-lucide="stethoscope"></i> <span>Plant Doctor AI</span>
+        </button>
+        <button class="nav-btn" data-tab="calculator">
+          <i data-lucide="droplet"></i> <span>Care Calculator</span>
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme">
+          <i data-lucide="sun" class="sun-icon"></i>
+          <i data-lucide="moon" class="moon-icon"></i>
+        </button>
+        <button class="btn btn-primary" id="btn-add-plant">
+          <i data-lucide="plus"></i> <span>Add Plant</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    
+    <!-- Tab 1: Plant Library -->
+    <section class="tab-panel active" id="tab-library">
+      <div class="hero-banner">
+        <div class="hero-text">
+          <h1>Nurture Your Indoor Sanctuary</h1>
+          <p>Discover care guides, optimal light levels, and watering rules tailored for over 50+ houseplant varieties.</p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-value" id="stat-total-plants">4</span>
+            <span class="stat-label">Species Cataloged</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">Organic Tips</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Filters -->
+      <div class="filter-bar-container">
+        <div class="search-box">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="library-search" placeholder="Search by name, botanical name, or room..." />
+          <button class="clear-search" id="clear-search"><i data-lucide="x"></i></button>
+        </div>
+
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">All Species</button>
+          <button class="filter-pill" data-filter="indoor">Indoor</button>
+          <button class="filter-pill" data-filter="low-light">Low Light Friendly</button>
+          <button class="filter-pill" data-filter="air-purifying">Air Purifying</button>
+          <button class="filter-pill" data-filter="pet-safe">Pet Safe 🐾</button>
+        </div>
+      </div>
+
+      <!-- Plant Cards Grid -->
+      <div class="plant-grid" id="plant-grid">
+        <!-- Dynamically injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Tab 2: My Garden -->
+    <section class="tab-panel" id="tab-garden">
+      <div class="section-header">
+        <div>
+          <h2>My Garden Tracker</h2>
+          <p>Keep track of watering dates, fertilization, and receive timely notifications.</p>
+        </div>
+        <button class="btn btn-secondary" id="btn-water-all">
+          <i data-lucide="droplet"></i> Water All Garden Plants
+        </button>
+      </div>
+
+      <div id="garden-empty-state" class="empty-state">
+        <div class="empty-icon"><i data-lucide="flower"></i></div>
+        <h3>Your garden is empty</h3>
+        <p>Explore the Plant Library to add plants to your personal collection and start tracking care.</p>
+        <button class="btn btn-primary" onclick="document.querySelector('[data-tab=library]').click()">Browse Library</button>
+      </div>
+
+      <div class="garden-grid" id="garden-grid">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+    <!-- Tab 3: Plant Doctor AI -->
+    <section class="tab-panel" id="tab-doctor">
+      <div class="doctor-container">
+        <div class="doctor-header">
+          <div class="doctor-badge"><i data-lucide="sparkles"></i> AI Health Diagnostic</div>
+          <h2>Plant Doctor & Leaf Diagnostic</h2>
+          <p>Experiencing leaf yellowing, drooping stems, or mysterious spots? Select symptoms below for an immediate remedy.</p>
+        </div>
+
+        <div class="doctor-grid">
+          <div class="symptom-selector-card">
+            <h3><i data-lucide="activity"></i> Step 1: Select Symptoms</h3>
+            <div class="symptoms-list" id="symptoms-list">
+              <label class="symptom-item">
+                <input type="checkbox" value="yellow_leaves" />
+                <span class="symptom-box">
+                  <span class="symptom-title">Yellowing Leaves</span>
+                  <span class="symptom-desc">Lower or older leaves turning pale yellow</span>
+                </span>
+              </label>
+
+              <label class="symptom-item">
+                <input type="checkbox" value="brown_tips" />
+                <span class="symptom-box">
+                  <span class="symptom-title">Crispy Brown Tips</span>
+                  <span class="symptom-desc">Leaf margins are brown, dry, and brittle</span>
+                </span>
+              </label>
+
+              <label class="symptom-item">
+                <input type="checkbox" value="drooping" />
+                <span class="symptom-box">
+                  <span class="symptom-title">Wilting / Drooping Stems</span>
+                  <span class="symptom-desc">Limp leaves despite moist soil or after dry spell</span>
+                </span>
+              </label>
+
+              <label class="symptom-item">
+                <input type="checkbox" value="white_webs" />
+                <span class="symptom-box">
+                  <span class="symptom-title">White Webbing or Spots</span>
+                  <span class="symptom-desc">Fine webs underneath leaves or cotton-like spots</span>
+                </span>
+              </label>
+
+              <label class="symptom-item">
+                <input type="checkbox" value="root_rot" />
+                <span class="symptom-box">
+                  <span class="symptom-title">Mushy Stems / Foul Soil Smell</span>
+                  <span class="symptom-desc">Soft blackened stems near soil line</span>
+                </span>
+              </label>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="btn-diagnose">
+              <i data-lucide="stethoscope"></i> Run AI Diagnosis
+            </button>
+          </div>
+
+          <div class="doctor-result-card" id="doctor-result">
+            <div class="initial-doctor-state">
+              <i data-lucide="heart-pulse" class="doctor-placeholder-icon"></i>
+              <h3>Ready to Diagnose</h3>
+              <p>Select one or more symptoms on the left and hit <strong>Run AI Diagnosis</strong> for personalized care instructions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 4: Care Calculator -->
+    <section class="tab-panel" id="tab-calculator">
+      <div class="calculator-container">
+        <div class="section-header">
+          <div>
+            <h2>Watering & Light Calculator</h2>
+            <p>Calculate exact watering frequency based on environmental factors.</p>
+          </div>
+        </div>
+
+        <div class="calc-card-wrapper">
+          <div class="calc-inputs-card">
+            <h3><i data-lucide="sliders"></i> Environmental Parameters</h3>
+            
+            <div class="calc-group">
+              <label>Pot Type & Material</label>
+              <select id="calc-pot-type" class="form-input">
+                <option value="terracotta">Terracotta / Unglazed Clay (High Transpiration)</option>
+                <option value="plastic" selected>Plastic / Glazed Ceramic (Moisture Retentive)</option>
+                <option value="fabric">Fabric Smart Pot (Very High Air Flow)</option>
+              </select>
+            </div>
+
+            <div class="calc-group">
+              <label>Room Sunlight Exposure</label>
+              <select id="calc-light" class="form-input">
+                <option value="bright-direct">Bright Direct Sun (South Facing Window)</option>
+                <option value="bright-indirect" selected>Bright Indirect Light (East/West Window)</option>
+                <option value="medium-indirect">Medium Indirect Light (Middle of room)</option>
+                <option value="low-light">Low Light (North Window / Office)</option>
+              </select>
+            </div>
+
+            <div class="calc-group">
+              <label>Room Average Temperature: <strong id="val-temp">22°C</strong></label>
+              <input type="range" id="calc-temp" min="15" max="35" value="22" class="slider" />
+            </div>
+
+            <div class="calc-group">
+              <label>Air Humidity Level: <strong id="val-humidity">50%</strong></label>
+              <input type="range" id="calc-humidity" min="20" max="80" value="50" class="slider" />
+            </div>
+          </div>
+
+          <div class="calc-results-card">
+            <h3><i data-lucide="droplets"></i> Prescribed Care Routine</h3>
+            
+            <div class="result-metric-box">
+              <span class="metric-label">Recommended Water Frequency</span>
+              <div class="metric-large" id="res-water-freq">Every 7 Days</div>
+              <span class="metric-sub" id="res-water-note">Moderate moisture retention</span>
+            </div>
+
+            <div class="care-tips-list">
+              <div class="tip-item">
+                <i data-lucide="sun" class="tip-icon"></i>
+                <div>
+                  <strong>Sunlight Match:</strong>
+                  <span id="res-sun-advice">Ideal for most tropical foliage plants. Rotate pot 90° weekly for balanced leaf orientation.</span>
+                </div>
+              </div>
+              <div class="tip-item">
+                <i data-lucide="wind" class="tip-icon"></i>
+                <div>
+                  <strong>Humidity Requirement:</strong>
+                  <span id="res-humidity-advice">Maintain above 45% using misting or a pebble tray to prevent leaf tip curling.</span>
+                </div>
+              </div>
+              <div class="tip-item">
+                <i data-lucide="shield-check" class="tip-icon"></i>
+                <div>
+                  <strong>Soil Check Method:</strong>
+                  <span>Insert finger 2 inches into soil. Water only when top soil feels dry to touch.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal: Plant Details -->
+  <div class="modal-backdrop" id="plant-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close"><i data-lucide="x"></i></button>
+      <div class="modal-body" id="modal-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Add Custom Plant -->
+  <div class="modal-backdrop" id="add-plant-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="add-modal-close"><i data-lucide="x"></i></button>
+      <div class="modal-header">
+        <h3><i data-lucide="plus-circle"></i> Add Plant to Sanctuary</h3>
+      </div>
+      <form id="form-add-plant" class="modal-form">
+        <div class="form-group">
+          <label>Plant Common Name</label>
+          <input type="text" id="add-name" required placeholder="e.g. Rubber Tree, Pothos..." class="form-input" />
+        </div>
+        <div class="form-group">
+          <label>Botanical / Scientific Name</label>
+          <input type="text" id="add-scientific" placeholder="e.g. Ficus elastica" class="form-input" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Category</label>
+            <select id="add-category" class="form-input">
+              <option value="Indoor">Indoor Foliage</option>
+              <option value="Succulent">Succulent / Cactus</option>
+              <option value="Air Purifying">Air Purifying</option>
+              <option value="Flowering">Flowering</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Water Every (Days)</label>
+            <input type="number" id="add-water-days" min="1" max="60" value="7" class="form-input" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Sunlight Preference</label>
+          <select id="add-light" class="form-input">
+            <option value="Bright Indirect">Bright Indirect Light</option>
+            <option value="Direct Sunlight">Direct Sunlight</option>
+            <option value="Low Light">Low Light</option>
+            <option value="Medium Light">Medium Light</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="add-modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save to Garden</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript File -->
+</body>
+</html>

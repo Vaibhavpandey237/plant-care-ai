@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plant Species Directory — Botanical information and requirements">
+    <title>Plant Species — Plant Care AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-icon">🌿</span>
+                <span>PlantCare<strong>AI</strong></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Diagnose</a></li>
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/plants" class="nav-link active">Plants</a></li>
+                <li><a href="/about" class="nav-link">About Us</a></li>
+                <li><a href="/contact" class="nav-link">Contact Us</a></li>
+                {% if current_user %}
+                <li><a href="/logout" class="nav-link btn-auth-outline">Sign Out ({{ current_user.username }})</a></li>
+                {% else %}
+                <li><a href="/login" class="nav-link">Sign In</a></li>
+                <li><a href="/signup" class="nav-link btn-auth">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main class="plants-main">
+        <div class="container">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">🌱 Species Knowledge Base</h1>
+                    <p class="page-subtitle">Botanical guides and care profiles for supported crop families</p>
+                </div>
+            </div>
+
+            <div class="species-grid">
+                {% for sp in species_list %}
+                <div class="species-card">
+                    <div class="species-header">
+                        <h2 class="species-name">{{ sp.name }}</h2>
+                        <span class="scientific-name"><em>{{ sp.scientific_name }}</em></span>
+                    </div>
+                    <p class="species-desc">{{ sp.description }}</p>
+
+                    <div class="species-details">
+                        <div class="detail-row"><strong>Family:</strong> {{ sp.family }}</div>
+                        <div class="detail-row"><strong>Sunlight:</strong> {{ sp.sun_requirements }}</div>
+                        <div class="detail-row"><strong>Watering:</strong> {{ sp.water_requirements }}</div>
+                        <div class="detail-row"><strong>Soil:</strong> {{ sp.soil_preference }}</div>
+                    </div>
+
+                    <div class="disease-list">
+                        <h4>Known Susceptibilities:</h4>
+                        <div class="chips-wrap">
+                            {% for dis in sp.common_diseases %}
+                            <span class="chip chip-disease">{{ dis }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>🌿 Plant Care AI — Powered by TensorFlow & MobileNetV2</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

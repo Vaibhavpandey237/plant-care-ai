@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plant Care AI Diagnosis Result — Detailed predictions, health score, and care recommendations">
+    <title>Diagnosis Result — Plant Care AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-icon">🌿</span>
+                <span>PlantCare<strong>AI</strong></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Diagnose</a></li>
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/plants" class="nav-link">Plants</a></li>
+                <li><a href="/about" class="nav-link">About Us</a></li>
+                <li><a href="/contact" class="nav-link">Contact Us</a></li>
+                {% if current_user %}
+                <li><a href="/logout" class="nav-link btn-auth-outline">Sign Out ({{ current_user.username }})</a></li>
+                {% else %}
+                <li><a href="/login" class="nav-link">Sign In</a></li>
+                <li><a href="/signup" class="nav-link btn-auth">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main class="result-main">
+        <div class="container">
+            <!-- Header -->
+            <div class="result-header">
+                <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+                <div class="result-title-wrap">
+                    <h1 class="result-title">
+                        {{ result.display_name if result.display_name else result.condition.replace('___', ' → ').replace('_', ' ') }}
+                    </h1>
+                    <span class="severity-badge severity-{{ result.severity.lower() }}">
+                        Severity: {{ result.severity }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Grid Layout -->
+            <div class="result-grid">
+                <!-- Left Column: Visual Gauge & Predictions -->
+                <div class="result-card left-card">
+                    <h2 class="card-title">Plant Health Assessment</h2>
+
+                    <!-- Health Score Gauge -->
+                    <div class="gauge-container">
+                        <div class="health-circle health-circle-{{ 'high' if result.health_score >= 70 else 'medium' if result.health_score >= 40 else 'low' }}">
+                            <span class="circle-score">{{ result.health_score }}</span>
+                            <span class="circle-max">/100</span>
+                        </div>
+                        <div class="gauge-label">
+                            {% if result.health_score >= 80 %}
+                                <span class="text-healthy">Excellent Condition</span>
+                            {% elif result.health_score >= 50 %}
+                                <span class="text-warning">Moderate Health — Treatment Recommended</span>
+                            {% else %}
+                                <span class="text-danger">Critical Health — Immediate Care Needed</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Top Predictions Progress Bars -->
+                    <h3 class="subsection-title">Top Predictions</h3>
+                    <div class="predictions-list">
+                        {% if record and record.all_predictions %}
+                            {% for pred in record.all_predictions %}
+                            <div class="prediction-item">
+                                <div class="pred-info">
+                                    <span class="pred-label">{{ pred.label.replace('___', ' → ').replace('_', ' ') }}</span>
+                                    <span class="pred-pct">{{ (pred.confidence * 100)|round(1) }}%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: {{ (pred.confidence * 100)|round(1) }}%;"></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="prediction-item">
+                                <div class="pred-info">
+                                    <span class="pred-label">{{ result.condition.replace('___', ' → ').replace('_', ' ') }}</span>
+                                    <span class="pred-pct">{{ (result.confidence * 100)|round(1) }}%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: {{ (result.confidence * 100)|round(1) }}%;"></div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Right Column: Description & Recommendations -->
+                <div class="result-card right-card">
+                    <h2 class="card-title">Care & Treatment Recommendations</h2>
+
+                    {% if result.description %}
+                    <div class="info-box">
+                        <h3>About this Condition</h3>
+                        <p>{{ result.description }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if result.causes %}
+                    <div class="info-box">
+                        <h3>Possible Causes</h3>
+                        <p>{{ result.causes }}</p>
+                    </div>
+                    {% endif %}
+
+                    <!-- Recommendations Categorized -->
+                    <div class="recommendations-container">
+                        <h3 class="subsection-title">Actionable Steps</h3>
+                        <div class="recs-grid">
+                            {% for rec in result.recommendations %}
+                            <div class="rec-card">
+                                <div class="rec-category">{{ rec.category }}</div>
+                                <div class="rec-text">{{ rec.text }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>🌿 Plant Care AI — Powered by TensorFlow & MobileNetV2</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

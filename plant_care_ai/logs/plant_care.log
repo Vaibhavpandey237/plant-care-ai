@@ -1,0 +1,205 @@
+2026-08-09 00:13:04 [INFO    ] database.db — Initializing database at: C:\plant care\plant_care_ai\plant_care.db
+2026-08-09 00:13:04 [INFO    ] database.db — Database tables ensured.
+2026-08-09 00:13:04 [INFO    ] database.db — Database initialization complete.
+2026-08-09 00:13:07 [INFO    ] app — Flask app created and configured.
+2026-08-09 00:13:07 [INFO    ] __main__ — Starting Plant Care AI Web Server on http://127.0.0.1:5000
+2026-08-09 00:13:29 [INFO    ] core.model — NumPy inference engine active (16 classes).
+2026-08-09 00:13:43 [INFO    ] core.classifier — Starting diagnosis — top_k=5, threshold=0.50
+2026-08-09 00:13:43 [INFO    ] core.classifier — Top prediction: Pepper,_bell___healthy (8.38%)
+2026-08-09 00:13:43 [WARNING ] core.classifier — Low confidence (0.08 < 0.50) — result marked as uncertain.
+2026-08-09 00:13:43 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:13:43 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:13:43 [ERROR   ] app — Exception on /upload [POST]
+Traceback (most recent call last):
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 85, in upload
+    user_id = session.get("user_id")
+              ^^^^^^^
+NameError: name 'session' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 101, in upload
+    return render_template("result.html", result=result, diagnosis_id=None)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\plant care\plant_care_ai\app\templates\result.html", line 42, in top-level template code
+    {{ result.display_name if result.display_name else result.condition.replace('___', ' → ').replace('_', ' ') }}
+    ^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'condition'
+2026-08-09 00:13:44 [ERROR   ] app — Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-08-09 00:16:39 [INFO    ] database.db — Initializing database at: C:\plant care\plant_care_ai\plant_care.db
+2026-08-09 00:16:39 [INFO    ] database.db — Database tables ensured.
+2026-08-09 00:16:39 [INFO    ] database.db — Database initialization complete.
+2026-08-09 00:16:40 [INFO    ] app — Flask app created and configured.
+2026-08-09 00:16:40 [INFO    ] __main__ — Starting Plant Care AI Web Server on http://127.0.0.1:5000
+2026-08-09 00:16:50 [INFO    ] core.classifier — Starting diagnosis — top_k=5, threshold=0.50
+2026-08-09 00:16:50 [INFO    ] core.classifier — Top prediction: Pepper,_bell___healthy (16.57%)
+2026-08-09 00:16:50 [WARNING ] core.classifier — Low confidence (0.17 < 0.50) — result marked as uncertain.
+2026-08-09 00:16:50 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:16:50 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:16:50 [ERROR   ] app — Exception on /upload [POST]
+Traceback (most recent call last):
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 85, in upload
+    try:
+    
+NameError: name 'session' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 101, in upload
+    # Still show result even if DB fails
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\plant care\plant_care_ai\app\templates\result.html", line 42, in top-level template code
+    {{ result.display_name if result.display_name else result.condition.replace('___', ' → ').replace('_', ' ') }}
+    ^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'condition'
+2026-08-09 00:16:50 [ERROR   ] app — Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-08-09 00:17:03 [INFO    ] database.db — Initializing database at: C:\plant care\plant_care_ai\plant_care.db
+2026-08-09 00:17:03 [INFO    ] database.db — Database tables ensured.
+2026-08-09 00:17:03 [INFO    ] database.db — Database initialization complete.
+2026-08-09 00:17:03 [INFO    ] app — Flask app created and configured.
+2026-08-09 00:17:03 [INFO    ] __main__ — Starting Plant Care AI Web Server on http://127.0.0.1:5000
+2026-08-09 00:17:10 [INFO    ] core.classifier — Starting diagnosis — top_k=5, threshold=0.50
+2026-08-09 00:17:10 [INFO    ] core.classifier — Top prediction: Pepper,_bell___healthy (16.57%)
+2026-08-09 00:17:10 [WARNING ] core.classifier — Low confidence (0.17 < 0.50) — result marked as uncertain.
+2026-08-09 00:17:10 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:17:10 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:17:10 [ERROR   ] app — Exception on /upload [POST]
+Traceback (most recent call last):
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 85, in upload
+    try:
+    
+NameError: name 'session' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 101, in upload
+    # Still show result even if DB fails
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\plant care\plant_care_ai\app\templates\result.html", line 42, in top-level template code
+    {{ result.display_name if result.display_name else result.condition.replace('___', ' → ').replace('_', ' ') }}
+    ^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'condition'
+2026-08-09 00:17:10 [ERROR   ] app — Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-08-09 00:17:39 [INFO    ] core.classifier — Starting diagnosis — top_k=5, threshold=0.50
+2026-08-09 00:17:39 [INFO    ] core.classifier — Top prediction: Pepper,_bell___healthy (16.57%)
+2026-08-09 00:17:39 [WARNING ] core.classifier — Low confidence (0.17 < 0.50) — result marked as uncertain.
+2026-08-09 00:17:39 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:17:39 [ERROR   ] app.routes.diagnose — DB persistence error: name 'session' is not defined
+2026-08-09 00:17:39 [ERROR   ] app — Exception on /upload [POST]
+Traceback (most recent call last):
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 85, in upload
+    try:
+    
+NameError: name 'session' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\plant care\plant_care_ai\app\routes\diagnose.py", line 101, in upload
+    # Still show result even if DB fails
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\plant care\plant_care_ai\app\templates\result.html", line 42, in top-level template code
+    {{ result.display_name if result.display_name else result.condition.replace('___', ' → ').replace('_', ' ') }}
+    ^
+  File "C:\Users\Dell\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'condition'
+2026-08-09 00:17:39 [ERROR   ] app — Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-08-09 00:18:20 [INFO    ] database.db — Initializing database at: C:\plant care\plant_care_ai\plant_care.db
+2026-08-09 00:18:20 [INFO    ] database.db — Database tables ensured.
+2026-08-09 00:18:20 [INFO    ] database.db — Database initialization complete.
+2026-08-09 00:18:20 [INFO    ] app — Flask app created and configured.
+2026-08-09 00:18:20 [INFO    ] __main__ — Starting Plant Care AI Web Server on http://127.0.0.1:5000
+2026-08-09 00:18:27 [INFO    ] core.model — NumPy inference engine active (16 classes).
+2026-08-09 00:18:27 [INFO    ] core.classifier — Starting diagnosis — top_k=5, threshold=0.50
+2026-08-09 00:18:27 [INFO    ] core.classifier — Top prediction: Pepper,_bell___healthy (16.57%)
+2026-08-09 00:18:27 [WARNING ] core.classifier — Low confidence (0.17 < 0.50) — result marked as uncertain.
+2026-08-09 00:19:06 [INFO    ] core.classifier — Starting diagnosis — top_k=5, threshold=0.50
+2026-08-09 00:19:06 [INFO    ] core.classifier — Top prediction: Pepper,_bell___healthy (8.38%)
+2026-08-09 00:19:06 [WARNING ] core.classifier — Low confidence (0.08 < 0.50) — result marked as uncertain.
+2026-08-09 00:23:16 [INFO    ] core.classifier — Starting diagnosis — top_k=5, threshold=0.50
+2026-08-09 00:23:17 [INFO    ] core.classifier — Top prediction: Pepper,_bell___healthy (8.38%)
+2026-08-09 00:23:17 [WARNING ] core.classifier — Low confidence (0.08 < 0.50) — result marked as uncertain.
+2026-08-23 16:02:40 [INFO    ] database.db — Initializing database at: C:\plant care\plant_care_ai\plant_care.db
+2026-08-23 16:02:40 [INFO    ] database.db — Database tables ensured.
+2026-08-23 16:02:40 [INFO    ] database.db — Database initialization complete.
+2026-08-23 16:02:42 [INFO    ] app — Flask app created and configured.
+2026-08-23 16:02:42 [INFO    ] __main__ — Starting Plant Care AI Web Server on http://127.0.0.1:5000
+2026-08-23 16:04:49 [INFO    ] core.model — NumPy inference engine active (16 classes).

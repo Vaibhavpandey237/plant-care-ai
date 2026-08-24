@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign Up — Plant Care AI">
+    <title>Create Account — Plant Care AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-icon">🌿</span>
+                <span>PlantCare<strong>AI</strong></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Diagnose</a></li>
+                <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/plants" class="nav-link">Plants</a></li>
+                <li><a href="/about" class="nav-link">About Us</a></li>
+                <li><a href="/contact" class="nav-link">Contact Us</a></li>
+                {% if current_user %}
+                <li><a href="/logout" class="nav-link btn-auth-outline">Sign Out ({{ current_user.username }})</a></li>
+                {% else %}
+                <li><a href="/login" class="nav-link">Sign In</a></li>
+                <li><a href="/signup" class="nav-link active btn-auth">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-container">
+        {% for category, message in messages %}
+        <div class="flash flash-{{ category }}">
+            <span>{{ message }}</span>
+            <button class="flash-close" onclick="this.parentElement.remove()">×</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <span class="auth-icon">🌱</span>
+                    <h1 class="auth-title">Create an Account</h1>
+                    <p class="auth-subtitle">Join Plant Care AI to save and track your plant diagnoses</p>
+                </div>
+
+                <form action="/signup" method="POST" class="auth-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-input" placeholder="Choose a username" value="{{ username or '' }}" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" value="{{ email or '' }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-input" placeholder="At least 6 characters" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-input" placeholder="Re-enter password" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block">Create Account</button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="/login" class="auth-link">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>🌿 Plant Care AI — Powered by TensorFlow & MobileNetV2</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
