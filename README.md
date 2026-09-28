@@ -1,14 +1,12 @@
-## 🌐 Live Website
+## 🌐 Project Link
 
 <p align="center">
 
-<a href="https://plant-care-ai.vercel.app/" target="_blank">
-  <img src="https://img.shields.io/badge/🌱%20Open%20PlantCare%20AI-Live%20Website-success?style=for-the-badge" />
+<a href="https://vercel.com/vaibhav-c4b5/plant-care-ai" target="_blank">
+  <img src="https://img.shields.io/badge/🌱%20Open%20PlantCare%20AI-Vercel-success?style=for-the-badge" />
 </a>
 
 </p>
-# 🌱 PlantCare AI
-
 ### 🤖 AI-Powered Plant Disease Detection & Smart Plant Care Assistant
 
 <p align="center">
