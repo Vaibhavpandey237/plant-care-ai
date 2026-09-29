@@ -1,0 +1,145 @@
+# ==============================================================================
+# PlantCare AI Monorepo — Universal .gitignore
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Operating System & Editors
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# IDEs & Editors
+.idea/
+.vscode/
+*.code-workspace
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# ------------------------------------------------------------------------------
+# Frontend (React + Vite)
+# ------------------------------------------------------------------------------
+node_modules/
+dist/
+dist-ssr/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+.vite/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.npm
+
+# ------------------------------------------------------------------------------
+# Backend Python (Flask + TensorFlow)
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+backend-python/venv/
+backend-python/.venv/
+backend-python/env/
+
+# Python Testing & Coverage
+.pytest_cache/
+backend-python/.pytest_cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+htmlcov/
+.ipynb_checkpoints
+
+# ------------------------------------------------------------------------------
+# Backend Java (Spring Boot + Maven)
+# ------------------------------------------------------------------------------
+target/
+backend-java/target/
+*.class
+backend-java/**/*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.rar
+hs_err_pid*
+replay_pid*
+.flattened-pom.xml
+
+# ------------------------------------------------------------------------------
+# Environment Variables & Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend-python/.env
+frontend/.env
+*.pem
+*.key
+
+# ------------------------------------------------------------------------------
+# Databases, Uploads & Logs
+# ------------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+backend-python/*.db
+
+# Logs
+logs/
+*.log
+backend-python/logs/*
+!backend-python/logs/.gitkeep
+
+# User uploads & runtime temp files
+backend-python/data/uploads/*
+!backend-python/data/uploads/.gitkeep
+test_export.csv
+*.tmp
+*.bak
